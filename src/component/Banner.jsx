@@ -33,8 +33,8 @@ function Banner(props) {
     const getApi = async () => {
         try {
             const res = await axios.get(`https://cdn.jwplayer.com/v2/playlists/${props.playlistId}`);
-            const data = res.data.playlist;
-            setData(data);
+            const data1 = res.data.playlist;
+            setData(data1);
         } catch (error) {
             console.error(error);
         }
@@ -46,7 +46,7 @@ function Banner(props) {
 
     useEffect(() => {
         getApi()
-    }, [])
+    })
 
     const settings = {
         dots: true,

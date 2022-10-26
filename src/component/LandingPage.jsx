@@ -44,7 +44,7 @@ function LandingPage(props) {
     }
     useEffect(() => {
         getApi()
-    }, [])
+    })
     const settings = {
         dots: false,
         infinite: false,
