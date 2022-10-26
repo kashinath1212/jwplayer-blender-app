@@ -1,0 +1,1 @@
+export const GET_BANNER_API_ID = "GET_BANNER_API_ID"

@@ -1,0 +1,1 @@
+export const GET_LANDING_API_ID = "GET_LANDING_API_ID"
