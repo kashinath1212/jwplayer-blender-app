@@ -1,15 +1,15 @@
-import { GET_LANDING_API_ID } from "./actionType";
+import { GET_API_MEDIA_ID } from "./actionType";
 
 const initialState = {
-    item: ''
+    mediaid: ''
 }
 
 export const LandingApiIdReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_LANDING_API_ID:
+        case GET_API_MEDIA_ID:
             return {
                 ...state,
-                item: action.payload
+                mediaid: action.payload,
             }
         default:
             return state;

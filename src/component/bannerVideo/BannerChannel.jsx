@@ -1,14 +1,35 @@
+import axios from 'axios';
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 function BannerChannel() {
-
-    const navigate = useNavigate()
-    const mainData = localStorage.getItem("banner")
-    const data = JSON.parse(mainData)
-    const mediaIdHandler = (item) => {
-        localStorage.setItem("mediaId", item)
+    // const [data1, setData1] = useState('')
+    const [data, setData] = useState()
+    const mediaId = useSelector(state => state.mediaId.mediaid)
+    console.log(mediaId);
+    const getApi = async () => {
+        try {
+            const res = await axios.get(`https://cdn.jwplayer.com/v2/media/${mediaId}`)
+            // console.log(res);
+            setData(res.data)
+        } catch (err) {
+            console.error(err);
+        }
     }
+    useEffect(() => {
+        getApi()
+    }, [])
+
+    // console.log(data);
+    const navigate = useNavigate()
+    // const mainData = localStorage.getItem("banner")
+    // const data = JSON.parse(mainData)
+    // const mediaIdHandler = (item) => {
+    //     localStorage.setItem("mediaId", item)
+    // }
 
     return (
         <div className='text-white d-flex flex-column align-items-start justify-content-start m-5'>
@@ -26,13 +47,13 @@ function BannerChannel() {
                     </div>
                 </div>
                 <div className='py-5'>
-                    <button className='btn btn-primary px-5 me-2' onClick={() => { return (navigate(`jwplayer`), mediaIdHandler(data?.mediaid)) }}>Start Watching</button>
+                    <button className='btn btn-primary px-5 me-2' onClick={() => { return (navigate(`jwplayerpage&query=${mediaId}`)) }}>Start Watching</button>
                     <button className='btn btn-secondary mx-2 px-4'>Favorite</button>
                     <button className='btn btn-secondary mx-2 px-4'>Share</button>
                 </div>
             </div>
-            <div style={{position: 'fixed', zIndex: "-1", top: "0px"}}>
-                <img src={data?.image} alt={data?.image} className="vh-100 w-100" style={{filter: 'blur(5px) brightness(100%)' ,objectFit: 'cover'}}/>
+            <div style={{ position: 'fixed', zIndex: "-1", top: "0px" }}>
+                <img src={data?.image} alt={data?.image} className="vh-100 w-100" style={{ filter: 'blur(5px) brightness(100%)', objectFit: 'cover' }} />
             </div>
         </div>
     )

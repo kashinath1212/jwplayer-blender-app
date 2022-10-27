@@ -1,1 +1,1 @@
-export const GET_LANDING_API_ID = "GET_LANDING_API_ID"
+export const GET_API_MEDIA_ID = "GET_API_MEDIA_ID"

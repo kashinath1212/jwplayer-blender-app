@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactJWPlayer from "react-jw-player";
+import { useSelector } from 'react-redux';
 
 const JwplayerVideo = () => {
-    const mediaId = localStorage.getItem("mediaId");
+    const mediaId = useSelector(state => state.mediaId.mediaid)
+    console.log(mediaId);
     
     return (
         <div className="App">
