@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router';
 import Banner from './Banner';
 import BannerChannel from './bannerVideo/BannerChannel';
@@ -7,6 +8,8 @@ import LandingPage from './LandingPage';
 
 
 function Blender() {
+
+  const mediaId = useSelector(state => state.mediaId.mediaid)
 
   const structureJson = [
     {
@@ -35,8 +38,8 @@ function Blender() {
             <Banner playlistId={data.playlistId} key={index} /> :
             <LandingPage playlistId={data.playlistId} key={index} />
         })} />
-        <Route path='/nextpage' element={<BannerChannel />} />
-        <Route path='/nextpage/jwplayer' element={<JwplayerVideo />} />
+        <Route path={`/nextpage&query=${mediaId}`} element={<BannerChannel />} />
+        <Route path={`/nextpage&query=${mediaId}/jwplayerpage&query=${mediaId}`} element={<JwplayerVideo />} />
       </Routes>
 
     </div>

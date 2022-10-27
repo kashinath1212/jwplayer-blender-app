@@ -86,3 +86,49 @@
   border: 2px solid white;
   border-radius: 4px;
 }
+.duration_display_time{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 999;
+  color: white;
+  font-weight: 500;
+  padding: 2px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #0009;
+}
+.duration_display_live{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 999;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 3px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #ce153f;
+}
+.card_div_img:hover .duration_display_live, .card_div_img:hover .duration_display_time {
+  display: none;
+}
+
+.description_box{
+  display: none;
+}
+
+.card_div_img:hover .description_box{
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  padding: 50px 10px 10px;
+  left: 0px;
+  z-index: 999;
+  color: white;
+  background-color: #0009;
+}
+.landing_box{
+  font-size: 10px !important;
+}

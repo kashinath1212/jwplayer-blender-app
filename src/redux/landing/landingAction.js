@@ -1,8 +1,8 @@
-import { GET_LANDING_API_ID } from "./actionType"
-export const getLandingApiId = (item) => {
+import { GET_API_MEDIA_ID } from "./actionType"
+export const getLandingApiId = (mediaId) => {
     console.log("landing action");
     return {
-        type: GET_LANDING_API_ID,
-        payload: item
+        type: GET_API_MEDIA_ID,
+        payload: mediaId
     }
 }
