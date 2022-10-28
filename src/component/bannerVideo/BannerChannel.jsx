@@ -6,14 +6,13 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 function BannerChannel() {
-    // const [data1, setData1] = useState('')
     const [data, setData] = useState()
+    const navigate = useNavigate()
     const mediaId = useSelector(state => state.mediaId.mediaid)
     console.log(mediaId);
     const getApi = async () => {
         try {
             const res = await axios.get(`https://cdn.jwplayer.com/v2/media/${mediaId}`)
-            // console.log(res);
             setData(res.data)
         } catch (err) {
             console.error(err);
@@ -23,13 +22,6 @@ function BannerChannel() {
         getApi()
     }, [])
 
-    // console.log(data);
-    const navigate = useNavigate()
-    // const mainData = localStorage.getItem("banner")
-    // const data = JSON.parse(mainData)
-    // const mediaIdHandler = (item) => {
-    //     localStorage.setItem("mediaId", item)
-    // }
 
     return (
         <div className='text-white d-flex flex-column align-items-start justify-content-start m-5'>

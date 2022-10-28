@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router';
+import { Route, Routes, useParams, useRoutes } from 'react-router';
 import Banner from './Banner';
 import BannerChannel from './bannerVideo/BannerChannel';
 import JwplayerVideo from './bannerVideo/JwplayerVideo';
@@ -8,7 +8,6 @@ import LandingPage from './LandingPage';
 
 
 function Blender() {
-
   const mediaId = useSelector(state => state.mediaId.mediaid)
 
   const structureJson = [
@@ -30,6 +29,7 @@ function Blender() {
       playlistId: "xQaFzykq"
     },
   ];
+
   return (
     <div className='w-100' style={{ overflow: "hidden" }}>
       <Routes>

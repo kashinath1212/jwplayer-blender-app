@@ -35,20 +35,17 @@ function LandingPage(props) {
         try {
             const res = await axios.get(`https://cdn.jwplayer.com/v2/playlists/${props.playlistId}`);
             const data = res.data.playlist;
-            // console.log(data);
             setData(data);
         } catch (error) {
             console.error(error);
         }
 
     }
-    console.log(data);
-    // const dataHandler = (item) => {
-    //     localStorage.setItem("banner", JSON.stringify(item))
-    // }
+
     useEffect(() => {
         getApi()
     }, [])
+
     const settings = {
         dots: false,
         infinite: false,
@@ -59,13 +56,13 @@ function LandingPage(props) {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     }
+
     return (
         <div>
             <Slider {...settings} className="">
                 {data?.map((item, index) => {
                     const words = new Array(item?.description)
                     const newWords = words[0].split(' ')
-                    // console.log(newWords.length);
                     return (
                         < div className='kashi' key={index} onClick={() => navigate(`nextpage&query=${item.mediaid}`)}>
                             <div className='m-2 ' onClick={() => dispatch(getLandingApiId(item.mediaid))}>
@@ -74,8 +71,8 @@ function LandingPage(props) {
                                         <div className='duration_box'>
                                             {item?.duration ? <span className='duration_display_time'>{Math.round(item?.duration / 60)}min</span> : <span className='duration_display_time'>Series</span>}
                                             <div className='description_box landing_box'>
-                                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title={item?.description}>
-                                                    {newWords.map((des, i) => { console.log(i < 12 && (des = des + ' ')); return (i < 13 && (des = des + ' ') || i === 26 && (`.......`)) })}
+                                                <span className="d-inline-block" tabIndex="0" data-toggle="tooltip" title={item?.description}>
+                                                    {newWords.map((des, i) => i < 13 && (des = des + ' ') || i === 26 && (`.......`))}
                                                 </span>
                                             </div>
                                         </div>
