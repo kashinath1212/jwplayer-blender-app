@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 
 const JwplayerVideo = () => {
     const mediaId = useSelector(state => state.mediaId.mediaid)
-    console.log(mediaId);
-    
+
     return (
         <div className="App">
             <div

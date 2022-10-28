@@ -27,8 +27,6 @@ function SamplePrevArrow(props) {
     );
 }
 
-
-
 function Banner(props) {
     const [data, setData] = useState()
     const dispatch = useDispatch()
@@ -43,7 +41,6 @@ function Banner(props) {
         }
 
     }
-    console.log(data);
 
     useEffect(() => {
         getApi()
@@ -62,14 +59,12 @@ function Banner(props) {
         prevArrow: <SamplePrevArrow />
     }
 
-
     return (
         <div className='pb-5 pt-1'>
             <Slider {...settings} className="">
                 {data?.map((item, index) => {
                     const words = new Array(item?.description)
                     const newWords = words[0].split(' ')
-                    console.log(newWords.length);
                     return (
                         <div className='' key={index} onClick={() => navigate(`nextpage&query=${item.mediaid}`)}>
                             <div className='m-2' onClick={() => dispatch(getLandingApiId(item.mediaid))}>
@@ -77,8 +72,8 @@ function Banner(props) {
                                     <div className='duration_box'>
                                         {item?.duration ? <span className='duration_display_time'>{Math.round(item?.duration / 60)}min</span> : <span className='duration_display_live'>live</span>}
                                         <div className='description_box'>
-                                            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title={item?.description}>
-                                                {newWords.map((des, i) => { console.log(i < 20 && (des = des + ' ')); return (i < 25 && (des = des + ' ') || i === 26 && (`.......`)) })}
+                                            <span className="d-inline-block" tabIndex="0" data-toggle="tooltip" title={item?.description}>
+                                                {newWords.map((des, i) => i < 25 && (des = des + ' ') || i === 26 && (`.......`))}
                                             </span>
                                         </div>
                                     </div>
@@ -92,7 +87,6 @@ function Banner(props) {
                     )
                 })}
             </Slider>
-
         </div>
     )
 }
