@@ -9,7 +9,6 @@ function BannerChannel() {
     const [data, setData] = useState()
     const navigate = useNavigate()
     const mediaId = useSelector(state => state.mediaId.mediaid)
-    console.log(mediaId);
     const getApi = async () => {
         try {
             const res = await axios.get(`https://cdn.jwplayer.com/v2/media/${mediaId}`)
